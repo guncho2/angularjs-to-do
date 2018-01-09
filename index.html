@@ -24,11 +24,24 @@ ler to the <body> tag in  index.html. -->
         <!-- Let's use the item variable to access the value
         inside the array. In this case, the item variable is task.
        -->
+       <!-- Try adding two tasks with the same name to your task list. What happens? Open your browser's dev tools console, and you'll see an error.
+The text field doesn't clear after submitting a new task. -->
+       <!-- Track by Index -->
+<!-- <li ng-repeat="task in todo.tasks track by $index">{{ task }}</li> -->
+
+       <!-- It's nice that we can create tasks, but deleting
+       taskings is just as important a feature. Fortunately, it's
+        a straightforward feature to implement. Start by adding a
+         delete button to each task in index.html. We want our
+          button to act on click, so add a  ng-click directive
+          that calls a function. We'll also need to know which
+          task to delete. Fortunately, the $index variable gives
+           us a way to do exactly that. -->
        <li ng-repeat="task in todo.tasks">
          {{ task }}
          <button ng-click="todo.deleteTask($index)"> Delete </button>
        </li>
-       
+
        <!-- Try adding two tasks with the same name to your task list. What happens? Open your browser's dev tools console, and you'll see an error.
 The text field doesn't clear after submitting a new task. -->
 
