@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!-- add the ng-app directive to the <html> tag
+to auto-bootstrap our  to-do module -->
+  <html ng-app="to-do">
+    <head>
+      <title>AngularJS To-Do</title>
+    </head>
+
+<!-- Use the ng-controller directive to add the control
+ler to the <body> tag in  index.html. -->
+    <body ng-controller="ToDoController as todo">
+      <h1>AngularJS To-Do</h1>
+      <ul id="to-do-list">
+        <!-- To access and display the contents of our array,
+         we'll use the ng-repeat directive.  ng-repeat duplicates
+          the element it's been added to once for each item in a
+          collection (in our case, our tasks array). Create a
+          single <li> tag and use  ng-repeat to repeat it. Use
+          the syntax someItem in someArray. Frequently, your
+          array name will be plural, and your item will be
+          singular. -->
+          <!-- <li ng-repeat="task in todo.tasks">{{ task }}</li> -->
+
+        <!-- Let's use the item variable to access the value
+        inside the array. In this case, the item variable is task.
+       -->
+       <li ng-repeat="task in todo.tasks">
+         {{ task }}
+         <button ng-click="todo.deleteTask($index)"> Delete </button>
+       </li>
+       
+       <!-- Try adding two tasks with the same name to your task list. What happens? Open your browser's dev tools console, and you'll see an error.
+The text field doesn't clear after submitting a new task. -->
+
+      </ul>
+      <!-- To create a new task, we'll use a form -->
+      <!-- User-friendly functionality, like the ability to submit the
+       form by pressing the  return key.
+A submit event that can be triggered using the ng-submit directive -->
+<!-- To make AngularJS respond to form submissions, add the ng-submit
+directive to the  <form> tag. Using the ng-submit, call a
+  function in the controller named  createTask. -->
+      <form ng-submit="todo.createTask()">
+        <!-- Use the ng-model directive to bind the input value to the controller.
+         Pass ng-model a property name that makes sense,
+         like taskName, of the todo controller. -->
+        <input type="text" ng-model="todo.taskName">
+        <input type="submit">
+ </form>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.js"></script>
+      <script src="app.js"></script>
+
+    </body>
+
+  </html>
